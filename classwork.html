@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reverse Arrays</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            body {
+                background-color: lavender
+            }
+            .box {
+                background-color: #ffffff;
+                color:darkviolet;
+            }
+            h1, h3 {
+                color: darkviolet;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container py-4">
+            
+            <h1 class="mb-1">Sorting my Songs</h1>
+            <p class="text-muted mb-4">Sorting and labeling music playlists using JavaScript array methods.</p>    
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                      <h3 class="card-title">Song Names</h3>
+                       <button class="btn btn-primary mr-2" onclick="sortAZ()">Sort Songs A-Z</button>
+                       <button class="btn btn-primary" onclick="sortZA()">Sort Songs Z-A</button>
+                       <div id="nameResults" class="box p-3 mt-3 rounded"></div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                      <h3 class="card-title">Play Counts</h3>
+                       <button class="btn btn-primary mr-2" onclick="sortLeast()">least Played songs first</button>
+                       <button class="btn btn-primary" onclick="sortMost()">Most PLayed Songs First</button>
+                       <div id="countResults" class="box p-3 mt-3 rounded"></div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                      <h3 class="card-title">Label every play count</h3>
+                       <button class="btn btn-primary" onclick="addLabel()">Add Play Label</button>
+                       <div id="labelResults" class="box p-3 mt-3 rounded"></div>
+                    </div>
+                </div>
+        </div>
+        <script>
+            var songs = ["Bohemian Rhapsody", "Stairway to Heaven", "Hotel California", "Sweet Child O' Mine", "Imagine"];
+            var plays = [150, 200, 120, 300, 250];
+
+            document.getElementById("nameResults").innerHTML = "Songs: " + songs;
+            document.getElementById("countResults").innerHTML = "Plays: " + plays;
+            document.getElementById("labelResults").innerHTML = "Press the Button Above!";
+
+            function sortAZ() {songs.sort(); document.getElementById("nameResults").innerHTML = "Songs A-Z: " + songs;}
+            function sortZA() {songs.sort().reverse(); document.getElementById("nameResults").innerHTML = "Songs Z-A: " + songs;}
+            function sortLeast() {plays.sort(function(a, b){return a-b}); document.getElementById("countResults").innerHTML = "Least Played Songs First: " + plays;}
+            function sortMost() {plays.sort(function(a, b){return b-a}); document.getElementById("countResults").innerHTML = "Most Played Songs First: " + plays;}
+            function addLabel() { var l = plays.map(function(c) { return c + " plays"; }); document.getElementById("labelResults").innerHTML = "Labeled: " + 1; }
+        </script>
+
+    </body>
+</html>
